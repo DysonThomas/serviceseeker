@@ -11,8 +11,11 @@ class Intropage extends StatelessWidget {
     return Container(
       child: Column(
         children: [
-          Image.asset(
-            imgpath,
+          Hero(
+            tag: 'avatarTag',
+            child: Image.asset(
+              imgpath,
+            ),
           ),
           SizedBox(
             height: 20,
