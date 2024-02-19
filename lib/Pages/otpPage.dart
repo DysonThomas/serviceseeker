@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl_phone_field/intl_phone_field.dart';
-import 'package:scerviceseeker/Pages/otpPage.dart';
+import 'package:scerviceseeker/Pages/locLoadingPage.dart';
 
-class LoginPage extends StatefulWidget {
+class OtpPage extends StatefulWidget {
   final int pictnum;
-
-  const LoginPage({super.key, required this.pictnum});
+  const OtpPage({super.key, required this.pictnum});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<OtpPage> createState() => _OtpPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _OtpPageState extends State<OtpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,33 +30,39 @@ class _LoginPageState extends State<LoginPage> {
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  'Enter Your Phone Number',
+                  'Enter Your OTP',
                   style: GoogleFonts.bebasNeue(
                     color: Colors.black,
                     fontSize: 30,
                   ),
                 ),
                 // Phone Number Text
-                const Padding(
-                  padding: EdgeInsets.fromLTRB(65, 10, 65, 10),
-                  child: IntlPhoneField(
-                    decoration: InputDecoration(
-                      labelText: 'Phone Number',
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(65, 5, 65, 5),
+                  child: Container(
+                      // Container(
+                      padding: EdgeInsets.all(10.0),
+                      decoration: BoxDecoration(
+                        // Grey background color
+                        borderRadius:
+                            BorderRadius.circular(10.0), // Rounded corners
+                        // Border// Rounded corners
                       ),
-                    ),
-                    initialCountryCode: 'CA',
-                  ),
+                      child: TextField(
+                        textAlign: TextAlign.center,
+                        keyboardType: TextInputType.phone,
+                      )),
+                ),
+                SizedBox(
+                  height: 25,
                 ),
                 GestureDetector(
                   onTap: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => OtpPage(
-                                  pictnum: widget.pictnum,
-                                )));
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => LocationLoading()),
+                    );
                   },
                   child: Container(
                     child: Icon(Icons.arrow_forward_sharp),
